@@ -1,0 +1,51 @@
+// Define the pins for the motor driver
+int motorPin1 = 2;
+int motorPin2 = 3;
+int motorPin3 = 4;
+int motorPin4 = 5;
+
+// Define the sequence of signals for each step of the motor
+int stepSequence[4][4] = {{1, 0, 0, 1},
+                          {1, 0, 0, 0},
+                          {1, 1, 0, 0},
+                          {0, 1, 0, 0}};
+
+// Define the speed and direction of the motor
+int motorSpeed = 100; // in microseconds
+int motorDirection = 1; // 1 for clockwise, -1 for counterclockwise
+
+void setup() {
+  // Set the motor driver pins as outputs
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+  pinMode(motorPin3, OUTPUT);
+  pinMode(motorPin4, OUTPUT);
+}
+
+void loop() {
+  // Step through the sequence of signals for each step of the motor
+  for (int i = 0; i < 4; i++) {
+    digitalWrite(motorPin1, stepSequence[i][0]);
+    digitalWrite(motorPin2, stepSequence[i][1]);
+    digitalWrite(motorPin3, stepSequence[i][2]);
+    digitalWrite(motorPin4, stepSequence[i][3]);
+    
+    // Delay for the specified speed
+    delayMicroseconds(motorSpeed);
+  }
+  
+  // Change the direction of the motor if necessary
+  if (motorDirection == 1) {
+    // Clockwise
+    stepSequence[0][0] = 1;
+    stepSequence[0][1] = 0;
+    stepSequence[0][2] = 0;
+    stepSequence[0][3] = 1;
+  } else {
+    // Counterclockwise
+    stepSequence[0][0] = 0;
+    stepSequence[0][1] = 0;
+    stepSequence[0][2] = 1;
+    stepSequence[0][3] = 1;
+  }
+}

@@ -1,0 +1,14 @@
+import board
+import pulseio
+
+# Set up PWM output on pin A1
+pwm = pulseio.PWMOut(board.A1, duty_cycle=2 ** 15, frequency=50)
+
+# Function to set the servo position
+def set_servo_position(position):
+    # Map the position value (0-360) to the PWM duty cycle (0-65535)
+    duty_cycle = int((position / 360) * 65535)
+    pwm.duty_cycle = duty_cycle
+
+# Example usage: set the servo to the 90 degree position
+set_servo_position(90)

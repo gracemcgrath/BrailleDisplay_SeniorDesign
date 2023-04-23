@@ -1,0 +1,28 @@
+import board
+import busio
+from adafruit_motor import servo
+
+# Set up I2C bus and PWM driver
+i2c = busio.I2C(board.SCL, board.SDA)
+pca = servo.PCA9685(i2c)
+
+# Set up servo object
+servo = servo.Servo(pca.channels[0], actuation_range=360, min_pulse=500, max_pulse=2500)
+
+# Example usage: set the servo speed to 50%
+servo.throttle = 0.5
+
+
+"
+This code uses the adafruit_motor library to create a Servo object that can be used to control the servo's rotation. 
+The PCA9685 class is used to drive the servo, and the Servo class provides a throttle property that can be set to control the servo speed and direction.
+
+In this example, the actuation_range parameter is set to 360 to indicate that the servo can rotate continuously in either direction. 
+The min_pulse and max_pulse parameters are set to 500 and 2500, respectively, 
+to match the pulse width range of the Feedback 360 Degree - High Speed Continuous Rotation Servo.
+
+To set the servo speed, simply set the throttle property to a value between -1.0 (full speed in one direction) 
+and 1.0 (full speed in the other direction). A value of 0.0 corresponds to stopped.
+
+
+"

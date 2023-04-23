@@ -12,3 +12,17 @@ def set_servo_position(position):
 
 # Example usage: set the servo to the 90 degree position
 set_servo_position(90)
+
+
+ "
+ 
+ This code uses the pulseio module to generate a PWM signal on pin A1, which is connected to the servo's control wire. 
+ The set_servo_position function takes a position value in degrees (0-360) and maps it to the appropriate PWM duty cycle to set the servo position.
+
+Note that the Feedback 360 Degree - High Speed Continuous Rotation Servo does not have a fixed position range like a standard servo,
+since it rotates continuously in either direction. However, you can use the set_servo_position function to control the speed and direction 
+of the rotation by adjusting the position value. A position of 0 corresponds to full speed rotation in one direction, 180 corresponds to stopped,
+and 360 corresponds to full speed rotation in the other direction.
+ 
+ 
+ "

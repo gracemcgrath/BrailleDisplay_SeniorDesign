@@ -24,13 +24,6 @@ def get_true_filename(filename):
 
 while True:
 
-    # def get_true_filename(synset):
-    #     try:
-    #         # Hack for pyInstaller. Refer https://stackoverflow.com/a/13790741
-    #         base = sys._MEIPASS
-    #     except Exception:
-    #         base = os.path.abspath(".")
-    #     return os.path.join(base, synset)
 
     # original code method to read file in existing directory
     with open(get_true_filename('synset.txt')) as f:
@@ -88,25 +81,9 @@ while True:
     #     a = np.argsort(preds)[::-1]
     #     print('class=%s' %(labels[a[0]],preds[a[0]]))
 
-    # Enter path to the inference image below
-    # img_path = 'kitten.jpg'
-    # out = predict(img_path)
-    # print(out)
-
-    # img_path = 'corgi.jpg'
-    # out = predict(img_path)
-    # print(out)
 
     img_path = input("Please select your image by typing the file name followed by the .jpg extension:  ")
     out = predict(img_path)
     print(out)
 
-
-    # cv2.imshow('Original', img)
-
-    # img_path = 'https://s3.amazonaws.com/model-server/inputs/kitten.jpg'
-    # out = predict(img_path)
-    # print(out)
-
-    # img=cv2.imread('py.jpg')
  

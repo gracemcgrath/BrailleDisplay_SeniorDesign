@@ -53,9 +53,9 @@ def predict(path):
     preds = session.run(None, ort_inputs)[0]
     preds = np.squeeze(preds)
     a = np.argsort(preds)[::-1]
-    print('class=%s ; probability=%f' %(labels[a[0]],preds[a[0]]))
+    print('The predicted object in the image is: %s ' %(labels[a[0]][10:]))
 
 # Enter path to the inference image below
-img_path = 'corgi.jpg'
+img_path = 'kitten.jpg'
 out = predict(img_path)
 print(out)
